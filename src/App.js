@@ -1,25 +1,13 @@
-import logo from './logo.svg';
-import './App.css';
+import express from 'express';
+import morgan from 'morgan'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Farmacia app
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import itemsRoutes from './routes/items.routes.js'
 
-export default App;
+const app = express();
+
+app.use(morgan('dev'));
+app.use(express.json());
+
+app.use(itemsRoutes);
+
+export default app;
