@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <div>
-        <h1 className='text-5xl mt-5 mb-10 tracking-widest'>Farmacia J'S</h1>
+        <h1 className='text-5xl mt-5 mb-10 tracking-widest italic font-bold'>Farmacia JS</h1>
         <section className='mx-4 mt-2 tracking-wider'>
           <Tablas/>
           <Formulario/>
