@@ -2,27 +2,15 @@ import { useState } from "react";
 
 export default function Formulario() {
 
-    const [state, setState] = useState({
-        nombreprod: '',
-        categoria: '',
-        cantidad: '',
-        precio: '',
-        descripcion: '',
-    });
 
-    function handleInputChange(e) {
-        const target = e.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-
-        setState({
-            [name]: value
-        });
-    }
+    const [nombreprod, setNombreprod] = useState('');
+    const [categoria, setCategoria] = useState('');
+    const [cantidad, setCantidad] = useState('');
+    const [precio, setPrecio] = useState('');
+    const [descripcion, setDescripcion] = useState('');
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("Submit")
         fetch('http://localhost:4000/items', {
             method: 'POST',
             headers: {
@@ -30,18 +18,18 @@ export default function Formulario() {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                nombreprod: state.nombreprod,
-                categoria: state.categoria,
-                cantidad: state.cantidad,
-                precio: state.precio,
-                descripcion: state.descripcion
+                nombreprod: nombreprod,
+                categoria: categoria,
+                precio: precio,
+                cantidad: cantidad,
+                descripcion: descripcion
             })
         });
     }
 
 
     return (
-        <div className="flex-none container mx-auto px-10 pt-2 pb-4 bg-teal-700 shadow hover:shadow-xl shadow-black rounded text-stone-100">
+        <div className="flex-none container max-w-xl mx-auto px-10 pt-2 pb-4 bg-teal-700 shadow hover:shadow-xl shadow-black rounded text-stone-100">
             <form onSubmit={handleSubmit}>
                 <h1 className="mt-5 text-l font-bold">Agregar nuevo producto</h1>
                 <div className="mb-2">
@@ -50,8 +38,8 @@ export default function Formulario() {
                             name="nombreprod"
                             className="mb-2 bg-gray-800 border border-black ring-gray-300 text-gray-50 text-sm rounded-lg block w-full p-2.5 focus:border-gray-500 focus:ring-gray-500"
                             placeholder="Nombre del producto"
-                            value={state.nombreprod}
-                            onChange={handleInputChange}
+                            value={nombreprod}
+                            onChange={(e)=>setNombreprod(e.target.value)}
                             required />
 
                     </label>
@@ -60,8 +48,8 @@ export default function Formulario() {
                             name="categoria"
                             className="mb-2 bg-gray-800 border border-black ring-gray-300 text-gray-50 text-sm rounded-lg block w-full p-2.5 focus:border-gray-500 focus:ring-gray-500"
                             placeholder="Categoría"
-                            value={state.categoria}
-                            onChange={handleInputChange}
+                            value={categoria}
+                            onChange={(e)=>setCategoria(e.target.value)}
                             required />
                     </label>
                     <label className="block mb-2 text-m font-medium text-gray-100">Existencia del Producto
@@ -69,8 +57,8 @@ export default function Formulario() {
                             name="cantidad"
                             className="mb-2 bg-gray-800 border border-black ring-gray-300 text-gray-50 text-sm rounded-lg block w-full p-2.5 focus:border-gray-500 focus:ring-gray-500"
                             placeholder="Cantidad"
-                            value={state.cantidad}
-                            onChange={handleInputChange}
+                            value={cantidad}
+                            onChange={(e)=>setCantidad(e.target.value)}
                             required />
                     </label>
                     <label className="block mb-2 text-m font-medium text-gray-100">Precio del Producto
@@ -79,8 +67,8 @@ export default function Formulario() {
                             id="precio"
                             className="mb-2 bg-gray-800 border border-black ring-gray-300 text-gray-50 text-sm rounded-lg block w-full p-2.5 focus:border-gray-500 focus:ring-gray-500"
                             placeholder="Precio"
-                            value={state.precio}
-                            onChange={handleInputChange}
+                            value={precio}
+                            onChange={(e)=>setPrecio(e.target.value)}
                             required />
                     </label>
                     <label className="block mb-2 text-m font-medium text-gray-100">Descripción del Producto
@@ -88,8 +76,8 @@ export default function Formulario() {
                             name="descripcion"
                             className="mb-5 bg-gray-800 border border-black ring-gray-300 text-gray-50 text-sm rounded-lg block w-full p-2.5 focus:border-gray-500 focus:ring-gray-500"
                             placeholder="Descripción"
-                            value={state.descripcion}
-                            onChange={handleInputChange} />
+                            value={descripcion}
+                            onChange={(e)=>setDescripcion(e.target.value)} />
                     </label>
                 </div>
                 <input type="submit"
