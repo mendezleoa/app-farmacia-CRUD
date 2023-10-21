@@ -29,7 +29,7 @@ export default function Formulario() {
 
 
     return (
-        <div className="flex-none container max-w-xl mx-auto px-10 pt-2 pb-4 bg-teal-700 shadow hover:shadow-xl shadow-black rounded text-stone-100">
+        <div className="flex-none container max-w-xl mx-auto px-10 pt-2 pb-4 bg-teal-900 shadow hover:shadow-xl shadow-black rounded text-stone-100">
             <form onSubmit={handleSubmit}>
                 <h1 className="mt-5 text-l font-bold">Agregar nuevo producto</h1>
                 <div className="mb-2">
