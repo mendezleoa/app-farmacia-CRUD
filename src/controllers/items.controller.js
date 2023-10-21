@@ -20,17 +20,38 @@ export const itemsGET = async (req, res) => {
 };
 
 export const itemsPOST = async (req, res) => {
-    const { nombreprod, categoria, precio, descripcion } = req.body;
+    const { nombreprod, categoria, precio, cantidad, descripcion } = req.body;
     console.log(req.body);
     try {
         const newProducto = await new Producto({
             nombreprod,
             categoria,
             precio,
+            cantidad,
             descripcion
         });
         newProducto.save();
         res.send("Producto guardado");
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+export const itemsPUT = async (req, res) => {
+    const { _id } = req.query;
+    try {
+        const productodelete = await Producto.deleteOne({"_id": _id});
+        res.json(productodelete);
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+export const itemsDELETE = async (req, res) => {
+    const { _id } = req.query;
+    try {
+        const productodelete = await Producto.deleteOne({"_id": _id});
+        res.json(productodelete);
     } catch (err) {
         console.log(err);
     }

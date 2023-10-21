@@ -13,6 +13,10 @@ const productoSchema = new mongoose.Schema({
         "type": Number,
         "required": true
     },
+    "cantidad": {
+        "type": Number,
+        "required": true
+    },
     "descripcion": {
         "type": String,
         "default": "N/A",

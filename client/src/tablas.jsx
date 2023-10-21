@@ -3,7 +3,12 @@ import { useFetch } from "./useFetch";
 function Tablas() {
     const { data, loading } = useFetch('http://localhost:4000/items');
 
-    console.log(data);
+    const eliminar = (key) => {
+        console.log(key);
+        fetch(`http://localhost:4000/items?_id=${key}`, {
+            method: 'DELETE'});
+    }
+
     return (
         <div className="my-3 p-1 rounded-sm">
             <ul className="flex flex-wrap justify-center text-justify">
@@ -15,6 +20,7 @@ function Tablas() {
                         <p className="text-sm">Precio: {prod.precio}$</p>
                         <p className="text-sm">Cantidad: {prod.cantidad}</p>
                         <p className="text-xs">Descripción: {prod.descripcion}</p>
+                        <button className="text-l px-4 py-2 rounded bg-red-600" id={prod._id} onClick={(e) =>{ eliminar(e.target.id)}}>Eliminar</button>
                     </li>
                 ))}
             </ul>
