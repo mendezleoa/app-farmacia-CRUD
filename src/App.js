@@ -2,7 +2,8 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 
-import itemsRoutes from './routes/items.routes.js'
+import usersRoutes from './routes/auth.routes.js';
+import itemsRoutes from './routes/items.routes.js';
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.use(cors({
 app.use(morgan('dev'));
 app.use(express.json());
 
+app.use(usersRoutes);
 app.use(itemsRoutes);
 
 export default app;

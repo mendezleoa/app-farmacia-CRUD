@@ -6,7 +6,7 @@ const router = Router();
 router.get('/items', itemsList);
 router.get('/items', itemsGET);
 router.post('/items', itemsPOST);
-router.delete('/items', itemsPUT);
+router.put('/items', itemsPUT);
 router.delete('/items', itemsDELETE);
 
 export default router;
