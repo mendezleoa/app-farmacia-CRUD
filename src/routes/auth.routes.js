@@ -1,12 +1,10 @@
 import { Router } from 'express';
-import { usersList, usersGET, usersPOST, usersPUT, usersDELETE } from '../controllers/auth.controller.js';
+import { register, login, logout } from '../controllers/auth.controller.js';
 
 const router = Router();
 
-router.get('/users', usersList);
-router.get('/login', usersGET);
-router.post('/register', usersPOST);
-router.put('/users', usersPUT);
-router.delete('/users', usersDELETE);
+router.post('/register', register);
+router.post('/login', login);
+router.post('/logout', logout);
 
 export default router;
