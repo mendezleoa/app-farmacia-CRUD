@@ -1,9 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
-function RegisterPage() {
+function LoginPage() {
     const {
         register,
         handleSubmit,
@@ -11,14 +9,8 @@ function RegisterPage() {
             errors
         }
     } = useForm();
-    const { signup, isAutenticated, errors: RegisterErrors } = useAuth();
-    const navigate = useNavigate();
+    const { signup } = useAuth();
 
-    useEffect(() => {
-        if (isAutenticated) {
-            navigate('/home');
-        }
-    }, [isAutenticated, navigate]);
     const onSubmit = handleSubmit(async (values) => {
         signup(values);
     });
@@ -37,14 +29,9 @@ function RegisterPage() {
                             }
                             )
                         }
-                        <h3 className='my-3 text-stone-100 text-2xl font-bold'>Regístrate ahora para usar el sistema.</h3>
-                        <h4 className='my-2 text-stone-100 text-lg'>Rellena los datos para crear un usuario en la plataforma.</h4>
+                        <h3 className='my-3 text-stone-100 text-2xl font-bold'>Ingresa con tu usuario para usar el sistema.</h3>
+                        <h4 className='my-2 text-stone-100 text-lg'>Rellena los datos de tu usuario en los campos inferiores. Si no tienes una cuenta haz click <a href='/register' className='text-green-400 font-semibold' >AQUÍ</a>.</h4>
                         <form className='mx-12 my-6' onSubmit={onSubmit}>
-                            <div className='flex items-center my-4'>
-                                <i className="fa-solid fa-user p-2"></i>
-                                <input type="text" placeholder='Nombre' className='bg-white border border-gray-800 w-full py-1 px-3 rounded-md' {...register("username", { required: true })} />
-                                {errors.username && <p className='text-stone-100 text-sm text-'>Se necesita el Nombre</p>}
-                            </div>
                             <div className='flex items-center my-4'>
                                 <i className="fa-solid fa-envelope p-2"></i>
                                 <input type="email" placeholder='Email' className='bg-white border border-gray-800 w-full py-1 px-3 rounded-md' {...register("email", { required: true })} />
@@ -55,7 +42,7 @@ function RegisterPage() {
                                 <input type="password" placeholder='Contraseña' className='bg-white border border-gray-800 w-full py-1 px-3 rounded-md' {...register("password", { required: true })} />
                                 {errors.password && <p className='text-stone-100 text-sm text-'>Se necesita el Nombre</p>}
                             </div>
-                            <button type="submit" className='bg-blue-400 text-sm text-white my-4 px-5 py-1.5 rounded-md'><i className="fa-solid fa-check px-2 text-green-300 text-xl"></i>Regístrate</button>
+                            <button type="submit" className='bg-blue-400 text-sm text-white my-4 px-5 py-1.5 rounded-md'>Ingresa</button>
                         </form>
                     </div>
                 </section>
@@ -67,4 +54,4 @@ function RegisterPage() {
     )
 }
 
-export default RegisterPage
+export default LoginPage
