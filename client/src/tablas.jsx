@@ -5,7 +5,7 @@ function Tablas() {
 
     const eliminar = (key) => {
         console.log(key);
-        fetch(`http://localhost:4000/items?_id=${key}`, {
+        fetch(`http://localhost:4000/items/?id=${key}`, {
             method: 'DELETE'});
     }
 
