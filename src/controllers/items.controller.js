@@ -1,19 +1,19 @@
 import Producto from "../models/producto.model.js";
 
-export const itemsList = async (req, res) => {
+export const itemsListGet = async (req, res) => {
     try {
-        const productofind = await Producto.find({});
-        res.json(productofind);
+        const productoFind = await Producto.find({});
+        res.json(productoFind);
     } catch (err) {
         console.log(err);
     }
 };
 
 export const itemsGET = async (req, res) => {
-    const { nombreprod } = req.query;
     try {
-        const productofind = await Producto.findOne({"nombreprod": nombreprod});
-        res.json(productofind);
+        const productoFind = await Producto.findOne({ "nombreprod": req.params.nombreprod });
+        if (!productoFind) return res.status(400).json({ message: "Producto no encontrado" });
+        res.json(productoFind);
     } catch (err) {
         console.log(err);
     }
@@ -38,20 +38,20 @@ export const itemsPOST = async (req, res) => {
 };
 
 export const itemsPUT = async (req, res) => {
-    const { _id } = req.query;
     try {
-        const productodelete = await Producto.deleteOne({"_id": _id});
-        res.json(productodelete);
+        const productoUpdated = await Producto.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!productoUpdated) return res.status(400).json({ message: "Producto no encontrado" });
+        res.json(productoUpdated);
     } catch (err) {
         console.log(err);
     }
 };
 
 export const itemsDELETE = async (req, res) => {
-    const { _id } = req.query;
     try {
-        const productodelete = await Producto.deleteOne({"_id": _id});
-        res.json(productodelete);
+        const productoDelete = await Producto.findByIdAndDelete(req.params.id);
+        if (!productoDelete) return res.status(400).json({ message: "Producto no encontrado" });
+        res.json(productoDelete);
     } catch (err) {
         console.log(err);
     }
