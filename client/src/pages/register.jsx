@@ -22,6 +22,7 @@ function RegisterPage() {
     }, [isAutenticated, navigate]);
     const onSubmit = handleSubmit(async (values) => {
         signup(values);
+        navigate('/prods');
     });
 
     return (

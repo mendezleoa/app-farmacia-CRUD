@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useProds } from "./context/ProdsContext";
+import { Link } from "react-router-dom";
 
 function Tablas() {
     const { getProds, deleteProd, prods } = useProds();
@@ -19,6 +20,7 @@ function Tablas() {
                         <p className="text-sm">Cantidad: {prod.cantidad}</p>
                         <p className="text-xs mb-2">Descripción: {prod.descripcion}</p>
                         <button className="text-l px-4 py-2 rounded bg-red-600" onClick={() => deleteProd(prod._id)}>Eliminar</button>
+                        <Link className="text-l ml-3 px-4 py-2 rounded bg-teal-700" to={`/formact/${prod._id}`}>Actualizar</Link>
                     </li>
                 ))}
             </ul>

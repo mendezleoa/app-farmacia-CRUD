@@ -1,9 +1,10 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 
 function LoginPage() {
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -15,6 +16,7 @@ function LoginPage() {
 
     const onSubmit = handleSubmit(async (values) => {
         signin(values);
+        navigate('/prods');
     });
 
     return (

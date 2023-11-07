@@ -6,6 +6,7 @@ import LoginPage from './pages/login.jsx';
 import { AuthProvider } from './context/AuthContext.jsx';
 import ProtectedRoute from './components/ProtectedRoute.jsx';
 import { ProdsProvider } from './context/ProdsContext.jsx';
+import FormularioAct from './formulario-act.jsx'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path='/register' element={<RegisterPage />} />
             <Route element={<ProtectedRoute />}>
               <Route path='/prods' element={<ProdsPage />} />
+              <Route path='/formact/:id' element={<FormularioAct/>}/>
             </Route>
           </Routes>
         </BrowserRouter>

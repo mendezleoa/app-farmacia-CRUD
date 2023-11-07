@@ -11,7 +11,7 @@ export const itemsListGet = async (req, res) => {
 
 export const itemsGET = async (req, res) => {
     try {
-        const productoFind = await Producto.findOne({ "nombreprod": req.params.nombreprod });
+        const productoFind = await Producto.findById(req.params.id);
         if (!productoFind) return res.status(400).json({ message: "Producto no encontrado" });
         res.json(productoFind);
     } catch (err) {
