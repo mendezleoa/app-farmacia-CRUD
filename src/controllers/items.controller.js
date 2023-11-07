@@ -2,8 +2,8 @@ import Producto from "../models/producto.model.js";
 
 export const itemsListGet = async (req, res) => {
     try {
-        const productoFind = await Producto.find({});
-        res.json(productoFind);
+        const productosFind = await Producto.find({});
+        res.json(productosFind);
     } catch (err) {
         console.log(err);
     }
@@ -31,7 +31,7 @@ export const itemsPOST = async (req, res) => {
             descripcion
         });
         newProducto.save();
-        res.send("Producto guardado");
+        res.json(newProducto);
     } catch (err) {
         console.log(err);
     }
