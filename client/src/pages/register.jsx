@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 function RegisterPage() {
     const {
@@ -16,7 +16,7 @@ function RegisterPage() {
 
     useEffect(() => {
         if (isAutenticated) {
-            navigate('/home');
+            navigate('/');
         }
     }, [isAutenticated, navigate]);
     const onSubmit = handleSubmit(async (values) => {
@@ -57,6 +57,7 @@ function RegisterPage() {
                             </div>
                             <button type="submit" className='bg-blue-400 text-sm text-white my-4 px-5 py-1.5 rounded-md'><i className="fa-solid fa-check px-2 text-green-300 text-xl"></i>Regístrate</button>
                         </form>
+                        <h4 className='my-2 text-stone-100 text-lg'>Si tienes un usuario haz click <Link to='/login' className='text-green-400 font-semibold' >AQUÍ</Link>.</h4>
                     </div>
                 </section>
             </div>

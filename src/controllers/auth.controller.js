@@ -1,6 +1,8 @@
 import Usuario from "../models/user.model.js";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 import { createAccesToken } from "../libs/jwt.js";
+import { TOKEN_SECRET } from "../config.js";
 
 export const register = async (req, res) => {
     const { username, email, password } = req.body;
@@ -17,7 +19,7 @@ export const register = async (req, res) => {
         const token = await createAccesToken({ id: newUsuario._id })
 
         res.cookie('token', token)
-        res.send({
+        res.json({
             id: newUsuario._id,
             username: newUsuario.username,
             email: newUsuario.email
@@ -43,7 +45,7 @@ export const login = async (req, res) => {
         const token = await createAccesToken({ id: userFind._id })
 
         res.cookie('token', token)
-        res.send({
+        res.json({
             id: userFind._id,
             username: userFind.username,
             email: userFind.email
@@ -66,9 +68,27 @@ export const profile = async (req, res) => {
 
     if (!userFind) return res.status(400).json({ message: "User not found" });
 
-    return res.send({
+    return res.json({
         id: userFind._id,
         username: userFind.username,
         email: userFind.email
     });
 };
+
+export const verifyToken = async (req, res) => {
+    const { token } = req.cookies;
+
+    if (!token) return res.status(400).json({ message: "Invalid token" });
+
+    jwt.verify(token, TOKEN_SECRET, async (err, user) => {
+        if (err) return res.status(400).json({ message: "Invalid token" });
+        const userFind = await Usuario.findById(user.id);
+        if (!userFind) return res.status(400).json({ message: "Invalid token" });
+
+        return res.json({
+            id: userFind._id,
+            username: userFind.username,
+            email: userFind.email
+        });
+    });
+}

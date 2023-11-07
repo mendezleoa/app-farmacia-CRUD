@@ -1,7 +1,7 @@
 import Tablas from '../tablas.jsx';
 import Formulario from '../formulario.jsx';
 
-function HomePage() {
+function ProdsPage() {
     return (
         <>
             <div className='mb-14'>
@@ -18,4 +18,4 @@ function HomePage() {
     )
 };
 
-export default HomePage
+export default ProdsPage
