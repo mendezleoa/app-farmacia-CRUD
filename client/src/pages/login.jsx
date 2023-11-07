@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 function LoginPage() {
     const {
@@ -18,8 +19,9 @@ function LoginPage() {
 
     return (
         <>
+            <Navbar />
             <div className='mb-14'>
-                <h1 className='text-5xl mt-5 mb-10 tracking-widest italic font-bold'>Farmacia JS</h1>
+                <h1 className='text-5xl mt-12 mb-10 tracking-widest italic font-bold'>Farmacia JS</h1>
                 <section className='mx-4 mt-2 tracking-wider'>
                     <div className="flex-none container max-w-xl mx-auto px-10 pt-2 pb-4 bg-cyan-700 shadow shadow-black rounded-xl text-stone-900">
                         {
