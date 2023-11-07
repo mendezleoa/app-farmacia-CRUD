@@ -17,6 +17,8 @@ Luego se debe instalar las dependencias con el comando `npm i` tanto en el clien
 
 ## MongoDB
 
+### Este paso es opcional, ahora se utiliza MongoDB Atlas.
+
 Se debe seguir la documentacion oficial de MongoDB para instalar el programa, ademas de recomendar el uso de MongoShell y MongoCompass. La documentacion es esta [MongoDB Documentación](https://www.mongodb.com/docs/manual/installation/).
 
 Se anexa además un video-tutorial del proceso para instalar y ejecutar la base de datos [Instalación de MongoDB y Compass para empezar con BASES de DATOS NoSQL](https://www.youtube.com/watch?v=Ucz1Fv7S76Y).
@@ -41,17 +43,23 @@ Deberas usar el comando `npm run dev` en la raíz del programa para ejecutar el 
 
 Computadora compartible con Windows 10 y 2gb o más de memoria RAM. Procesador compatible con navegadores actuales.
 
+Instalar Node v21
+
 # Herramientas
 
 Se han utilizado las siguientes herramientas para el funcionamiento adecuado del proyecto.
 
-## MongoDB
+## MongoDB Atlas
 
-MongoDB es una base de datos de documentos que ofrece una gran escalabilidad y flexibilidad, y un modelo de consultas e indexación avanzado.
+MongoDB es una base de datos de documentos que ofrece una gran escalabilidad y flexibilidad, y un modelo de consultas e indexación avanzado. El proyecto se ha subido a una instancia de MongoDB Atlas, que provee de un servidor en la nube para la base de datos alojado por servidores de empresas reconocidas de la tecnología.
 
 ## React
 
 React (también llamada React.js o ReactJS) es una librería Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página. Es mantenido por Facebook y la comunidad de software libre. En el proyecto hay más de mil desarrolladores libres.
+
+## Tailwind CSS
+
+Es un framework de CSS de los más utilizados en el FrontEnd, ya que se conoce como la competencia directa de Bootstrap y un potente ayudante para el diseño y estilización de páginas Web. Se utiliza por la gran libertad que ofrece a la hora de personalizar los estilos de CSS que tiene pre-configurados, además de su facil implementación en frameworks como React.
 
 ## Node js
 
