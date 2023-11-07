@@ -1,5 +1,6 @@
 import Tablas from '../tablas.jsx';
 import Formulario from '../formulario.jsx';
+import FormularioAct from '../formulario-act.jsx';
 import Navbar from '../components/Navbar.jsx';
 
 function ProdsPage() {

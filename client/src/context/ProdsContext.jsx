@@ -1,5 +1,5 @@
 import { createContext, useState, useContext } from 'react'
-import { createProdRequest, getProdsRequest } from '../api/prods';
+import { createProdRequest, getProdsRequest, deleteProdRequest } from '../api/prods';
 import Cookies from 'js-cookie';
 
 export const ProdsContext = createContext()
@@ -16,12 +16,29 @@ export const ProdsProvider = ({children}) => {
     const [prods, setProds] = useState(null);
 
     const getProds = async () => {
-        const res = await getProdsRequest();
-        setProds(res.data);
+        try {
+            const res = await getProdsRequest();
+            setProds(res.data);
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     const createProd = async (prod) => {
-        const res = await createProdRequest(prod);
+        try {
+            const res = await createProdRequest(prod);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    const deleteProd = async (id) => {
+        try {
+            const res = await deleteProdRequest(id);
+            if (res.status === 204) setProds(prods.filter(prod => prod._id !== id));
+        } catch (err) {
+            console.log(err);
+        }
     };
 
     return (
@@ -29,7 +46,8 @@ export const ProdsProvider = ({children}) => {
             value= {{
                 prods,
                 createProd,
-                getProds
+                getProds,
+                deleteProd
             }}
         >
             {children}

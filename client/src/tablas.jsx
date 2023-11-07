@@ -1,18 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useProds } from "./context/ProdsContext";
 
 function Tablas() {
-    const { getProds, prods } = useProds();
+    const { getProds, deleteProd, prods } = useProds();
 
     useEffect(() => {
         getProds()
     }, [])
-    
-    const eliminar = (key) => {
-        console.log(key);
-        fetch(`http://localhost:4000/items/${key}`, {
-            method: 'DELETE'});
-    }
 
     return (
         <div className="my-3 p-1 rounded-sm">
@@ -24,7 +18,7 @@ function Tablas() {
                         <p className="text-sm">Precio: {prod.precio}$</p>
                         <p className="text-sm">Cantidad: {prod.cantidad}</p>
                         <p className="text-xs mb-2">Descripción: {prod.descripcion}</p>
-                        <button className="text-l px-4 py-2 rounded bg-red-600" id={prod._id} onClick={(e) =>{ eliminar(e.target.id)}}>Eliminar</button>
+                        <button className="text-l px-4 py-2 rounded bg-red-600" onClick={() => deleteProd(prod._id)}>Eliminar</button>
                     </li>
                 ))}
             </ul>
